@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Flask - Weather App</title>
+        <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" type="text/css"/>
+        <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}"/>
+    </head>
+    <body>
+        <form action="">
+            Pogledaj vremensku prognozu za grad:
+            <input name="searchcity" type="text" value=""/>
+            <input type="submit" value="Submit"/>
+            <input type="checkbox" name="remeber" checked="checked"> Remember<br/>
+        </form>
+        <h1>Vremenska prognoza za <strong>{{city}}, {{country}}</strong></h1>
+        <table border="1">
+            <tr>
+                <th>Date</th>
+                <th>Min</th>
+                <th>Max</th>
+                <th>Description</th>
+            </tr>
+            {% for day in forecast_list %}
+                <tr>
+                    <td>{{day[0]}}</td>
+                    <td>{{day[1]}}</td>
+                    <td>{{day[2]}}</td>
+                    <td>{{day[3]}}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </body>
+</html>
